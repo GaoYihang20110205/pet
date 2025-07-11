@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>289</width>
+    <height>471</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Virtual Pet</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="petPic">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>171</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>pet1.gif</normaloff>
+      <disabledoff>pet1.gif</disabledoff>pet1.gif</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>160</width>
+      <height>134</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_growth">
+    <property name="geometry">
+     <rect>
+      <x>31</x>
+      <y>340</y>
+      <width>221</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Aa宋徽宗瘦金加粗版 (非商业使用)</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>成长度:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_health">
+    <property name="geometry">
+     <rect>
+      <x>31</x>
+      <y>290</y>
+      <width>221</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Aa宋徽宗瘦金加粗版 (非商业使用)</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>健康度:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_hunger">
+    <property name="geometry">
+     <rect>
+      <x>31</x>
+      <y>191</y>
+      <width>221</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Aa宋徽宗瘦金加粗版 (非商业使用)</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>饱食度:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_happiness">
+    <property name="geometry">
+     <rect>
+      <x>31</x>
+      <y>240</y>
+      <width>221</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Aa宋徽宗瘦金加粗版 (非商业使用)</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>愉悦度:</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionStop"/>
+   <addaction name="actionFeed"/>
+   <addaction name="actionWalk"/>
+   <addaction name="actionPlay"/>
+   <addaction name="actionDoctor"/>
+  </widget>
+  <action name="actionStop">
+   <property name="icon">
+    <iconset>
+     <normaloff>stopbutton.gif</normaloff>stopbutton.gif</iconset>
+   </property>
+   <property name="text">
+    <string>停止</string>
+   </property>
+  </action>
+  <action name="actionFeed">
+   <property name="icon">
+    <iconset>
+     <normaloff>eatbutton.gif</normaloff>eatbutton.gif</iconset>
+   </property>
+   <property name="text">
+    <string>喂食</string>
+   </property>
+  </action>
+  <action name="actionWalk">
+   <property name="icon">
+    <iconset>
+     <normaloff>walkbutton.gif</normaloff>walkbutton.gif</iconset>
+   </property>
+   <property name="text">
+    <string>散步</string>
+   </property>
+  </action>
+  <action name="actionPlay">
+   <property name="icon">
+    <iconset>
+     <normaloff>playbutton.gif</normaloff>playbutton.gif</iconset>
+   </property>
+   <property name="text">
+    <string>玩耍</string>
+   </property>
+  </action>
+  <action name="actionDoctor">
+   <property name="icon">
+    <iconset>
+     <normaloff>docbutton.gif</normaloff>docbutton.gif</iconset>
+   </property>
+   <property name="text">
+    <string>寻医</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
