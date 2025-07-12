@@ -58,6 +58,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         except:
             filehandle = False
         if filehandle:
+            file.close()
             os.remove("savedata_vp.pkl")
             ftp.down()
             file = open("savedata_vp.pkl", "rb")
@@ -259,6 +260,9 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         save_list = [self.happiness, self.health, self.hunger, \
                      datetime.datetime.now(), self.time_cycle, self.growth, self.year]
         pickle.dump(save_list, file)
+        file.close()
+        ftp.up()
+        os.remove("savedata_vp.pkl")
         event.accept()
 
     def menuExit_selected(self):
