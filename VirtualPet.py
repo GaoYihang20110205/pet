@@ -1,6 +1,8 @@
-import sys, pickle,datetime
+import sys, pickle,datetime,os
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
+import ftp
 #UI
+
 formclass = uic.loadUiType("virtualpet.ui")[0]
 #宠物类
 class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
@@ -21,15 +23,15 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         self.forceAwake = False
         #成长值
         self.growth = 0
+        self.year = 0
         # Lists images for animations
         self.sleepImages = ["img/sleep1.gif","img/sleep2.gif","img/sleep3.gif",
                             "img/sleep4.gif"]
-        self.eatImages = ["img/eat1.gif", "img/eat2.gif"]
-        self.walkImages = ["img/walk1.gif", "img/walk2.gif", "img/walk3.gif",
-                           "img/walk4.gif"]
-        self.playImages = ["img/play1.gif", "img/play2.gif"]
+        self.eatImages = ["img/eat1.gif", "img/eat2.gif", "img/eat3.gif", "img/eat4.gif", "img/eat5.gif", "img/eat6.gif", "img/eat7.gif", "img/eat8.gif", "img/eat9.gif"]
+        self.walkImages = ["img/walk1.gif", "img/walk2.gif", "img/walk3.gif", "img/walk4.gif", "img/walk5.gif", "img/walk6.gif", "img/walk7.gif", "img/walk8.gif", "img/walk9.gif", "img/walk10.gif", "img/walk11.gif", "img/walk12.gif"]
+        self.playImages = ["img/play1.gif", "img/play2.gif", "img/play3.gif", "img/play4.gif", "img/play5.gif", "img/play6.gif", "img/play7.gif", "img/play8.gif"]
         self.doctorImages = ["img/doc1.gif", "img/doc2.gif"]
-        self.nothingImages  = ["img/pet1.gif", "img/pet2.gif", "img/pet3.gif"]
+        self.nothingImages  = ["img/pet1.gif", "img/pet2.gif", "img/pet3.gif", "img/pet4.gif", "img/pet5.gif", "img/pet6.gif", "img/pet7.gif", "img/pet8.gif", "img/pet9.gif", "img/pet10.gif", "img/pet11.gif", "img/pet12.gif", "img/pet13.gif", "img/pet13.gif"]
 
         self.imageList = self.nothingImages
         self.imageIndex = 0
@@ -56,10 +58,13 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         except:
             filehandle = False
         if filehandle:
+            os.remove("savedata_vp.pkl")
+            ftp.down()
+            file = open("savedata_vp.pkl", "rb")
             save_list = pickle.load(file)  # Reads from pickle file if open
             file.close()
         else:
-            save_list = [8, 8, 0, datetime.datetime.now(), 0, 0]  # Uses default values if pickle file not open
+            save_list = [8, 8, 0, datetime.datetime.now(), 0, 0, 0]  # Uses default values if pickle file not open
         # Pulls individual values out of list
         self.happiness = save_list[0]
         self.health    = save_list[1]
@@ -67,6 +72,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         timestamp_then = save_list[3]
         self.time_cycle = save_list[4]
         self.growth = save_list[5]
+        self.year = save_list[6]
 
         # Checks how long since last run
         difference = datetime.datetime.now() - timestamp_then
@@ -74,6 +80,11 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         for i in range(0, ticks):
             # Simulates all ticks that happened during down time
             self.time_cycle += 1
+            if self.time_cycle % 5 == 0:
+                self.growth += 1
+            if self.growth >= 365:
+                self.growth = 0
+                self.year += 1
             if self.time_cycle == 60:
                 self.time_cycle = 0
             if self.time_cycle <= 48:  # Awake
@@ -92,14 +103,15 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         # Uses correct animation—awake or sleeping
         if self.sleeping:
             self.imageList = self.sleepImages
+            self.label_state.setText("状态:睡觉")
         else:
             self.imageList = self.nothingImages
+            self.label_state.setText("状态:无事")
 
     def sleep_test(self):
         # Checks if pet is sleeping before doing an action
         if self.sleeping:
-            result = (QtWidgets.QMessageBox.warning(self, '警告',  # Type of dialog
-"你确定要将你的宠物叫醒?这样太没良心了!",
+            result = (QtWidgets.QMessageBox.warning(self, '警告', "你确定要将你的宠物叫醒?这样太没良心了!",
                     QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,  # Buttons to show
                     QtWidgets.QMessageBox.No))  # Default button
 
@@ -121,6 +133,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.walking = False
             self.eating = False
             self.playing = False
+            self.label_state.setText("状态:寻医")
 
     # The feed button event handler
     def feed_Click(self):
@@ -130,6 +143,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.walking = False
             self.playing = False
             self.doctor = False
+            self.label_state.setText("状态:喂食")
 
     # The play button event handler
     def play_Click(self):
@@ -139,6 +153,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.walking = False
             self.eating = False
             self.doctor = False
+            self.label_state.setText("状态:玩耍")
 
     # The walk button event handler
     def walk_Click(self):
@@ -148,6 +163,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.eating = False
             self.playing = False
             self.doctor = False
+            self.label_state.setText("状态:散步")
 
     # The stop button event handler
     def stop_Click(self):
@@ -157,6 +173,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.eating = False
             self.playing = False
             self.doctor = False
+            self.label_state.setText("状态:无事")
 
     def animation_timer(self):
         # The animation timer (every 0.5 sec) event handler
@@ -174,7 +191,9 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         self.label_hunger.setText("饱食度:"+str((8-self.hunger)*(100/8.0)))
         self.label_happiness.setText("愉悦度:"+str(self.happiness*(100/8.0)))
         self.label_health.setText("健康度:"+str(self.health*(100/8.0)))
-        self.label_growth.setText("成长度:"+str(self.growth))
+        self.label_growth.setText("天数:"+str(self.growth))
+        self.label_year.setText("年数:"+str(self.year))
+
 
     def tick_timer(self):  # Start of main 5 sec timer event handler
         # Checks if sleeping or awake
@@ -185,10 +204,14 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.sleeping = False
         else:
             self.sleeping = True
+            self.label_state.setText("状态:睡觉")
         if self.time_cycle == 0:
             self.forceAwake = False
         if self.time_cycle % 5 == 0:
             self.growth += 1
+        if self.growth >= 365:
+            self.growth == 0
+            self.year += 1
         if self.doctor:
             # Adds or subtracts units depending on activity
             self.health += 1
@@ -220,17 +243,21 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         if self.health < 0:  self.health = 0
         if self.happiness > 8:  self.happiness = 8
         if self.happiness < 0:  self.happiness = 0
+        if self.growth > 365:  self.growth = 365
+        if self.growth < 0:  self.growth = 0
         # Updates label
         self.label_hunger.setText("饱食度:"+str((8-self.hunger)*(100/8.0)))
         self.label_happiness.setText("愉悦度:"+str(self.happiness*(100/8.0)))
         self.label_health.setText("健康度:"+str(self.health*(100/8.0)))
-        self.label_growth.setText("成长度:"+str(self.growth))
+        self.label_growth.setText("天数:"+str(self.growth))
+        self.label_year.setText("年数:"+str(self.year))
+            
 
     def closeEvent(self, event):
         # Saves status and timestamp to pickle file
         file = open("savedata_vp.pkl", "wb")  # Line-continuation character
         save_list = [self.happiness, self.health, self.hunger, \
-                     datetime.datetime.now(), self.time_cycle, self.growth]
+                     datetime.datetime.now(), self.time_cycle, self.growth, self.year]
         pickle.dump(save_list, file)
         event.accept()
 

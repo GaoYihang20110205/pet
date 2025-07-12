@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>289</width>
+    <width>430</width>
     <height>471</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Virtual Pet</string>
+   <string>宠物小猫</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.png</normaloff>icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="petPic">
@@ -34,8 +38,8 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>pet1.gif</normaloff>
-      <disabledoff>pet1.gif</disabledoff>pet1.gif</iconset>
+      <normaloff>C:/Users/Administrator/.designer/backup/pet1.gif</normaloff>
+      <disabledoff>C:/Users/Administrator/.designer/backup/pet1.gif</disabledoff>C:/Users/Administrator/.designer/backup/pet1.gif</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -64,7 +68,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Aa宋徽宗瘦金加粗版 (非商业使用)</family>
+      <family>黑体</family>
       <pointsize>20</pointsize>
      </font>
     </property>
@@ -83,7 +87,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Aa宋徽宗瘦金加粗版 (非商业使用)</family>
+      <family>黑体</family>
       <pointsize>20</pointsize>
      </font>
     </property>
@@ -102,7 +106,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Aa宋徽宗瘦金加粗版 (非商业使用)</family>
+      <family>黑体</family>
       <pointsize>20</pointsize>
      </font>
     </property>
@@ -121,12 +125,70 @@
     </property>
     <property name="font">
      <font>
-      <family>Aa宋徽宗瘦金加粗版 (非商业使用)</family>
+      <family>黑体</family>
       <pointsize>20</pointsize>
      </font>
     </property>
     <property name="text">
      <string>愉悦度:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_state">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>150</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>黑体</family>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;状态:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>10</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>黑体</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>属性</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_year">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>40</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>黑体</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>年数:</string>
     </property>
    </widget>
   </widget>
@@ -170,7 +232,7 @@
   <action name="actionFeed">
    <property name="icon">
     <iconset>
-     <normaloff>eatbutton.gif</normaloff>eatbutton.gif</iconset>
+     <normaloff>E:/FFOutput/放置猫粮 (1).gif</normaloff>E:/FFOutput/放置猫粮 (1).gif</iconset>
    </property>
    <property name="text">
     <string>喂食</string>
@@ -179,7 +241,7 @@
   <action name="actionWalk">
    <property name="icon">
     <iconset>
-     <normaloff>walkbutton.gif</normaloff>walkbutton.gif</iconset>
+     <normaloff>walkbutton.jpg</normaloff>walkbutton.jpg</iconset>
    </property>
    <property name="text">
     <string>散步</string>
@@ -188,7 +250,7 @@
   <action name="actionPlay">
    <property name="icon">
     <iconset>
-     <normaloff>playbutton.gif</normaloff>playbutton.gif</iconset>
+     <normaloff>playbutton.jpg</normaloff>playbutton.jpg</iconset>
    </property>
    <property name="text">
     <string>玩耍</string>
