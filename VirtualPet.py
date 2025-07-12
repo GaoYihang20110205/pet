@@ -181,6 +181,9 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         icon.addPixmap(QtGui.QPixmap(current_image),
                        QtGui.QIcon.Disabled, QtGui.QIcon.Off)
         self.petPic.setIcon(icon)
+        if self.growth == 365:
+            self.growth = 0
+            self.year += 1
         self.label_hunger.setText("饱食度:"+str((8-self.hunger)*(100/8.0)))
         self.label_happiness.setText("愉悦度:"+str(self.happiness*(100/8.0)))
         self.label_health.setText("健康度:"+str(self.health*(100/8.0)))
@@ -202,9 +205,6 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.forceAwake = False
         if self.time_cycle % 5 == 0:
             self.growth += 1
-        if self.growth == 365:
-            self.growth == 0
-            self.year += 1
         if self.doctor:
             # Adds or subtracts units depending on activity
             self.health += 1
