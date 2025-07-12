@@ -51,15 +51,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         self.myTimer2.start(5000)
         self.myTimer2.timeout.connect(self.tick_timer)
 
-        filehandle = True
-        # Tries to open pickle file
-        try:
-            file = open("savedata_vp.pkl", "rb")
-        except:
-            filehandle = False
-        if filehandle:
-            file.close()
-            os.remove("savedata_vp.pkl")
+        if True:
             ftp.down()
             file = open("savedata_vp.pkl", "rb")
             save_list = pickle.load(file)  # Reads from pickle file if open
@@ -83,7 +75,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.time_cycle += 1
             if self.time_cycle % 5 == 0:
                 self.growth += 1
-            if self.growth >= 365:
+            if self.growth == 365:
                 self.growth = 0
                 self.year += 1
             if self.time_cycle == 60:
@@ -210,7 +202,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.forceAwake = False
         if self.time_cycle % 5 == 0:
             self.growth += 1
-        if self.growth >= 365:
+        if self.growth == 365:
             self.growth == 0
             self.year += 1
         if self.doctor:
