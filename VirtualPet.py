@@ -73,7 +73,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
         for i in range(0, ticks):
             # Simulates all ticks that happened during down time
             self.time_cycle += 1
-            if self.time_cycle % 5 == 0:
+            if self.time_cycle % 60 == 0:
                 self.growth += 1
             if self.growth == 365:
                 self.growth = 0
@@ -203,7 +203,7 @@ class VirtualPetWindow(QtWidgets.QMainWindow, formclass):
             self.label_state.setText("状态:睡觉")
         if self.time_cycle == 0:
             self.forceAwake = False
-        if self.time_cycle % 5 == 0:
+        if self.time_cycle % 60 == 0:
             self.growth += 1
         if self.doctor:
             # Adds or subtracts units depending on activity
