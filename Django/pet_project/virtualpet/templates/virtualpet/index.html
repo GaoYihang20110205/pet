@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>虚拟宠物之家</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-top: 50px;
+        }
+        .welcome-image {
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+            display: block;
+        }
+        .start-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .start-button:hover {
+            background-color: #45a049;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到虚拟宠物之家</h1>
+        <img class="welcome-image" src="{% static 'img/pet1.gif' %}" alt="虚拟宠物">
+        <p>领养一只属于你的虚拟小猫，照顾它、陪伴它成长吧！</p>
+        <a href="{% url 'pet_detail' %}"><button class="start-button">开始饲养</button></a>
+    </div>
+</body>
+</html>
